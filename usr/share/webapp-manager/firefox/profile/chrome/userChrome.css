@@ -7,6 +7,7 @@ See the above repository for updates as well as full license text. */
 
 :root{
   --uc-autohide-toolbox-delay: 0ms; /* Wait 0.1s before hiding toolbars */
+  --uc-reveal-toolbox-delay: 33ms; /* Delay before showing */
   --uc-toolbox-rotation: 82deg;  /* This may need to be lower on mac - like 75 or so */
 }
 
@@ -41,14 +42,14 @@ See the above repository for updates as well as full license text. */
 #urlbar-container > #urlbar[popover]:is([focused],[open]){
   pointer-events: auto;
   opacity: 1;
-  transition-delay: 33ms;
+  transition-delay: var(--uc-reveal-toolbox-delay);
   transform: rotateX(0deg);
 }
 #mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts,#tab-preview-panel)) ~ toolbox,
 #navigator-toolbox:has(#urlbar:is([open],[focus-within])),
 #navigator-toolbox:hover,
 #navigator-toolbox:focus-within{
-  transition-delay: 33ms !important;
+  transition-delay: var(--uc-reveal-toolbox-delay) !important;
   transform: rotateX(0);
   opacity: 1;
 }
@@ -59,7 +60,7 @@ See the above repository for updates as well as full license text. */
   :root[sizemode="maximized"]:not(:hover){
     #navigator-toolbox:not(:-moz-window-inactive),
     #urlbar[popover]:not(:-moz-window-inactive){
-      transition-delay: 33ms !important;
+      transition-delay: var(--uc-reveal-toolbox-delay) !important;
       transform: rotateX(0);
       opacity: 1;
     }
